@@ -1,6 +1,6 @@
 {
-  "name": "react-template",
-  "homepage": "https://pages.git.generalassemb.ly/caleb-pearce/react-deploy-tesyt",
+  "name": "react-components-and-state",
+  "homepage": "https://github.io/<GH USER NAME>/<REPO NAME>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
