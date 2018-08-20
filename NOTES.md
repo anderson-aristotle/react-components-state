@@ -1,16 +1,11 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# Old README
 
-# React Components and State
+The following is the README from an older version of this lesson. It's got way too much writing and not enough we do/you do, which is why
+it was changed. Still it's got some useful info for instructors.
 
-### Learning Objectives
-*After this code-along section, you will be able to:*
-* Define state
-* Create an initial state in a component
-* Change the state of a component
+## Begin old README
 
-## Intro
-
-At this point, we know about React properties and how they relate to our component's data.
+At this point, we know about React props and how they relate to our component's data.
 * The thing is, `props` represent data that will be the same every time our component is rendered. What about data in our application that may change depending on user action?
 * That's where `state` comes in.
 
@@ -35,7 +30,7 @@ The first thing we always put in a constructor is a call to `super()`, which say
 ```js
 class Movie extends Component {
   constructor (props) {
-    super() 
+    super()
   }
 
   render () {
@@ -56,13 +51,13 @@ class Movie extends Component {
 ```
 
 Right now, that constructor doesn't actually do anything. What we need to do is
-add some initial state to keep track of whether we like this movie. 
+add some initial state to keep track of whether we like this movie.
 
 ```js
 class Movie extends Component {
   constructor (props) {
-    super() 
-    
+    super()
+
     this.liked = false
   }
 
@@ -127,4 +122,3 @@ This is super important! Using React, **we only change parts of the DOM that nee
 After 10 clicks, the user should see the counter reset to 1.
 
 *If you're interested in reading more in depth about this, here is more on what [should & shouldn't go in state](https://facebook.github.io/react/docs/state-and-lifecycle.html). This link is also in the Further Reading page at the end of the React module.*
-

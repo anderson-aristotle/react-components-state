@@ -2,22 +2,9 @@
 
 # Talk Template
 
-Use this template to structure your READMEs for talks. Remove text from this
-section, or use it to frame the talk you are giving. Good framing answers the
-question "Why am I learning this?".
-
-Be sure to include a recent [`LICENSE`](LICENSE) and Markdown linter
-configuration ([`.remarkrc`](.remarkrc)). Also, include an appropriate
-`.gitignore`; these are usually found in specific technology templates, for
-example [js-template](https://www.github.com/ga-wdi-boston/js-template).
-
 ## Prerequisites
 
--   Topics with which developers should be familiar with.
--   Prerequisites are "just-in-time", so if I have a prerequisite that mentions
-    Sass, I would **not** need to include CSS as a prerequisite.
--   [Links to previous materials](https://www.github.com/ga-wdi-boston/example)
-    are often useful.
+-   [react-components-and-props](https://git.generalassemb.ly/ga-wdi-boston/react-components-and-props)
 
 ## Objectives
 
@@ -39,68 +26,89 @@ By the end of this, developers should be able to:
 1.  Checkout to the `training` branch.
 1.  Install dependencies with `npm install`.
 
-Better preparation instructions may be found as
-[snippets](https://github.com/ga-wdi-boston/instructors/tree/master/snippets).
+## State in React Components
 
-It's a good idea to have students do these steps while you're writing objectives
-on the whiteboard.
+At this point, we know that we can pass data into a React component by providing
+props. This allows data to flow "downwards", from parent component to child
+component. Where does this data originate from, though? What if we need to
+frequently update that data?
 
-## Leading Topic Heading
+So far, that data has just been an array or object in the global scope of
+`App.js`. This is not ideal for dynamic data -- if the data changes, every
+component needs to know that, so that it can decide whether it needs to
+re-render anything that's changed. To achieve this, React components keep track
+of data in an object called "state".
 
-Here is where the talk begins. If you have not already included framing above,
-it's appropriate to put it here. Link to introductory articles or documentation.
-Motivate the next section.
+## State vs. Props
 
-Demos, exercises, and labs are labelled as such, followed by a colon and a
-description of the activity starting with an [imperative
-verb](https://en.wikipedia.org/wiki/Imperative_mood).
+`state` and `props` have a lot in common:
 
-## Demo: Write a Demo
+-  Both are POJOs.
+-  Changes to a component's props or state cause the component's `render`
+   method to be called.
+-  Neither should be modified directly. (e.g. no `this.props.foo = 'bar'`)
+-  Both are optional. A React component doesn't need props or state to render
+   markup to the DOM (it wouldn't be very useful with neither, though).
 
-Demos are demonstrations, and developers should give their full attention to
-them. It's a great time for them to take notes about important concepts before
-applying them in an exercise.
+They are also different in a few key ways:
 
-Demos correspond to the "I do" portion of scaffolding from consultant training.
+-  Props are passed into a component from its parent. State is determined
+   _within_ a component.
+-  Props are initalized by adding attributes in JSX, e.g. `<MyComponent coolProp="radical!" />`. State is declared in a component's `constructor` method.
+-  Props can only be modified in the parent component. State is modified in
+   the component itself, with a call to `this.setState`.
 
-## Code-Along: Write an Code-Along
 
-During the code-along, developers should apply concepts covered in the previous
-demo, led by the consultant.
-This is their first chance to generalize concepts introduced. Exercises should
-be very focused, and flow natural into a lab.
+## Demo: A simple stateful component
 
-Exercises correspond to the "We do" portion of scaffolding from consultant
-training.
+Let's take a look at a very simple example of a React component that keeps
+track of its own state. You can follow along and add comments in
+ `src/StateDemo.js`.
 
-## Lab: Write a Lab
+To render this component, instead of the contents of `App.js`, I'll just switch
+out the `import` in `src/index.js`. Don't worry too much about this, it's just
+a way to have multiple React apps in one repo for demonstration purposes.
 
-During labs, developers get to demonstrate their understanding of concepts from
-demos and applied knowledge from exercises. Labs are an opportunity for
-developers to build confidence, and also serve as a diagnostic tool for
-consultants to evaluate developer understanding.
+I'll walk you through what's happening line by line, and show you the result
+in the browser. Then, let's see if we can avoid having to use `.bind` on all
+our component methods.
 
-Labs should be timed explicitly using a timer. When estimating the time it will
-take to complete a lab, it is better to overestimate. During labs, consultants
-should circle the room and interact with developers, noting patterns and
-prompting with hints on how to complete the lab. If developers end early, a
-consultant may stop the lab timer. If developers do not finish in time, a
-consultant may give more time at her discretion based on current talk pace, the
-current estimate for the talk, and the importance of completing the lab while
-consultant support is available.
+## Code-Along: Add option to "Like" a movie
 
-Labs correspond to the "You do" portion of scaffolding from consultant
-training.
+Now that we know how to update state in a component, let's modify our `Movie`
+component to allow us to "like" a movie and keep track of our opinions.
+
+To add this functionality, we'll need to do the following:
+
+1. give our `Movie` component a constructor, so that we can initialize a `state`
+   object. The component should store just one property in its state: a boolean
+   called `liked`.
+1. Create a function that toggles that `liked` property on the state object.
+1. Render a "like" button.
+1. Give some visual indication when a `Movie` is liked.
+
+There are a few things we'll need to keep in mind:
+
+- `this.setState` is asynchronous, so any `this.setState` calls where the new
+  state depends on the old state need to use [a slightly different syntax](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous).
+- Event listeners in React are attached with the syntax
+  `onChange={this.funcName}`. Note that this is different from the `onchange`
+  attribute built into HTML.
+- Similarly, classes are added to elements in React with the syntax `className="foo"`, **NOT** the familiar `class="foo"`.
+
+## Lab: Toggle Actors Display
+
+For some practice with state, add another method to our `Movie` component that
+toggles a `hideActors` boolean on the state object. Only display information
+about actors when the `hideActors` boolean is true.
+
+**HINT:** You can use ternaries or `if` statements in JSX to display different
+markup depending on whether a variable or expression is truthy.
 
 ## Additional Resources
 
--   Any useful links should be included in the talk material where the link is
-    first referenced.
--   Additional links for further study or exploration are appropriate in this
-    section.
--   Links to important parts of documentation not covered during the talk, or
-    tools tangentially used but not part of the focus of the talk, are also
-    appropriate.
+-   [React Docs - State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+-   [CSS Tricks - React State From the Ground Up](https://css-tricks.com/react-state-from-the-ground-up/)
 
 ## [License](LICENSE)
 
