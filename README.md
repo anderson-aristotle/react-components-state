@@ -76,7 +76,7 @@ component to allow us to "like" a movie and keep track of our opinions.
 
 To add this functionality, we'll need to do the following:
 
-1. give our `Movie` component a constructor, so that we can initialize a `state`
+1. Give our `Movie` component a constructor, so that we can initialize a `state`
    object. The component should store just one property in its state: a boolean
    called `liked`.
 1. Create a function that toggles that `liked` property on the state object.
