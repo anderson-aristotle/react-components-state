@@ -90,7 +90,8 @@ There are a few things we'll need to keep in mind:
 - Event listeners in React are attached with the syntax
   `onChange={this.funcName}`. Note that this is different from the `onchange`
   attribute built into HTML.
-- Similarly, classes are added to elements in React with the syntax `className="foo"`, **NOT** the familiar `class="foo"`.
+- Similarly, classes are added to elements in React with the syntax
+  `className="foo"`, **NOT** the familiar `class="foo"`.
 
 ## Lab: Toggle Actors Display
 
