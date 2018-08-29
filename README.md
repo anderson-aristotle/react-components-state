@@ -10,13 +10,9 @@
 
 By the end of this, developers should be able to:
 
--   Write objectives that focus on demonstrating knowledge.
--   Write learning objectives that begin with an [imperative
-    verb](https://en.wikipedia.org/wiki/Imperative_mood).
--   Avoid objectives that start with "Use" or "Understand".
--   Rewrite objecives that begin with "Use" by inverting sentence structure.
--   End each objective with a period.
--   Write objectives on the whiteboard so they can be referenced during a talk.
+-  Identify when a component needs to have internal state.
+-  Set an initial state of a component in the constructor.
+-  Alter the state of a component through invoking setState.
 
 ## Preparation
 
