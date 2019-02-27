@@ -50,7 +50,7 @@ They are also different in a few key ways:
 
 -  Props are passed into a component from its parent. State is determined
    _within_ a component.
--  Props are initalized by adding attributes in JSX, e.g. `<MyComponent coolProp="radical!" />`. State is declared in a component's `constructor` method.
+-  Props are initalized by adding attributes in JSX, e.g. `<MyComponent coolProp="radical!" />`. State is declared in a component's [`constructor`](https://reactjs.org/docs/react-component.html#constructor) method.
 -  Props can only be modified in the parent component. State is modified in
    the component itself, with a call to `this.setState`.
 

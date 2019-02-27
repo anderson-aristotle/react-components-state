@@ -1,3 +1,12 @@
+# Notes
+
+Great whiteboard of components compared to markup:
+https://media.git.generalassemb.ly/user/5694/files/53234028-a145-11e8-8108-becec66ce3f6
+
+More Reading about lifecycles, plus a lab to practice AJAX:
+https://git.generalassemb.ly/ga-wdi-pvd/react-component-lifecycle
+
+
 # Old README
 
 The following is the README from an older version of this lesson. It's got way too much writing and not enough we do/you do, which is why
