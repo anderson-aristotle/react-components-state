@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Actor from './Actor'
 
 class EditableHeader extends Component {
   constructor () {
